@@ -6,12 +6,16 @@
      It should be safe --- at least xkcd says it is safe. And xkcd is right always ;)
 
 """
-__author__ = 'jb'
+from __future__ import print_function
+
+from random import SystemRandom
 
 import os
-import random
 
 DIRNAME = os.path.dirname(__file__)
+
+RAND = SystemRandom()
+
 
 def load():
     result = set()
@@ -24,12 +28,8 @@ def load():
 DATA = load()
 
 
-def random_pass(word_count = 3):
+def random_pass(word_count=5):
     words = []
     for ii in range(word_count):
-        words.append(random.choice(DATA))
+        words.append(RAND.choice(DATA))
     return "-".join(words)
-
-
-
-
